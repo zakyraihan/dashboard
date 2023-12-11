@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "368154495869",
+    "project_id": "fir-auth-fba1c",
+    "storage_bucket": "fir-auth-fba1c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:368154495869:android:7b68f6660dbcddca305a14",
+        "android_client_info": {
+          "package_name": "com.example.dashboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXuCqxir8ml8jqvZybN9bwh8qXt930j5g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
