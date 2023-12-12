@@ -1,5 +1,7 @@
+import 'package:dashboard/color/constant_color.dart';
 import 'package:dashboard/features/user_auth/auth/controller/auth_controller.dart';
 import 'package:dashboard/features/user_auth/signup.dart';
+import 'package:dashboard/widget/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -77,27 +79,13 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             const Gap(39),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: TextButton(
-                onPressed: () async => await authC.signIn(),
-                child: Container(
-                  width: double.infinity,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color: Colors.blueAccent,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      'Login',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 17),
+              child: Obx(() => CustomButtonWidget(
+                  label: authC.isLoading.isTrue ? 'Loading...' : 'Sign In',
+                  isFullButton: true,
+                  onPressed: authC.isLoading.isTrue
+                      ? null
+                      : () async => await authC.signIn())),
             ),
             const Gap(10),
             Row(
@@ -117,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     'Sign Up',
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
-                      color: Colors.blueAccent,
+                      color: blue,
                     ),
                   ),
                 )

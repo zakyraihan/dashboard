@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dashboard/features/user_auth/auth/firebase/firebase.dart';
+import 'package:dashboard/features/firebase/firebase.dart';
 import 'package:dashboard/features/user_auth/auth/model/user_model.dart';
 import 'package:dashboard/route/route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -27,7 +27,7 @@ class AuthController extends GetxController {
 
   Future<void> signUp() async {
     try {
-      _isLoading.value == true;
+      _isLoading.value = true;
 
       final credential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -35,9 +35,17 @@ class AuthController extends GetxController {
         password: passwordController.text,
       );
 
-      print('CREDENTIAL ${credential.user}');
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
 
       final userModel = UserModel(
+        accesToken: credential.credential?.accessToken ?? '',
+        token: credential.credential?.token.toString() ?? '0',
+        createdAt: credential.user?.metadata.creationTime ?? DateTime.now(),
+        photoUrl: credential.user?.photoURL ?? '',
+        uid: credential.user?.uid ?? '',
         email: emailController.text,
         id: '1',
         password: passwordController.text,
@@ -52,7 +60,7 @@ class AuthController extends GetxController {
         title: 'Berhasil Register',
         message: 'Register Berhasil Ke Esa Unggul',
         duration: Duration(seconds: 3),
-      )).future.then((value) => Get.offAllNamed(RouteName.homeScreen));
+      )).future.then((value) => Get.offAllNamed(RouteName.dashBoard));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         Get.showSnackbar(const GetSnackBar(
@@ -88,7 +96,7 @@ class AuthController extends GetxController {
         email: emailController.text,
         password: passwordController.text,
       );
-      Get.offAllNamed(RouteName.homeScreen);
+      Get.offAllNamed(RouteName.dashBoard);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         Get.showSnackbar(const GetSnackBar(
@@ -122,6 +130,8 @@ class AuthController extends GetxController {
         message: 'Sorry, $e',
         duration: const Duration(seconds: 3),
       ));
+    } finally {
+      _isLoading.value = false;
     }
   }
 }

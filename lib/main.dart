@@ -1,8 +1,10 @@
+import 'package:dashboard/features/dashboard/controller/dashboard_controller.dart';
+import 'package:dashboard/features/homepage/controller/home_controller.dart';
 import 'package:dashboard/firebase_options.dart';
 import 'package:dashboard/route/route.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +20,11 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       getPages: RoutePages().routes,
-      initialRoute: RouteName.onBoarding,
+      initialRoute: RouteName.splashScreen,
+      initialBinding: BindingsBuilder(() {
+        Get.put(HomeController());
+        Get.put(DashboardController());
+      }),
     );
   }
 }

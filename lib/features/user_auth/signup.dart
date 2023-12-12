@@ -1,5 +1,7 @@
+import 'package:dashboard/color/constant_color.dart';
 import 'package:dashboard/features/user_auth/auth/controller/auth_controller.dart';
-import 'package:dashboard/features/user_auth/login.dart';
+import 'package:dashboard/features/user_auth/signin.dart';
+import 'package:dashboard/widget/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -70,29 +72,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             const Gap(25),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 13),
-              child: Obx(
-                () => TextButton(
-                  onPressed: () async => await authC.signUp(),
-                  child: Container(
-                    width: double.infinity,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Center(
-                      child: Text(
-                        authC.isLoading.isTrue ? 'loading...' : 'Sign Up',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 17),
+              child: Obx(() => CustomButtonWidget(
+                  label: authC.isLoading.isTrue ? 'Loading...' : 'Sign Up',
+                  isFullButton: true,
+                  onPressed: authC.isLoading.isTrue
+                      ? null
+                      : () async => await authC.signUp())),
             ),
             const Gap(10),
             Row(
@@ -112,7 +98,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     'Login',
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
-                      color: Colors.blueAccent,
+                      color: blue,
                     ),
                   ),
                 )
