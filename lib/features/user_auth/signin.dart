@@ -81,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 17),
               child: Obx(() => CustomButtonWidget(
-                  label: authC.isLoading.isTrue ? 'Loading...' : 'Sign In',
+                  label: authC.isLoading.isTrue ? 'Loading...' : 'Log In',
                   isFullButton: true,
                   onPressed: authC.isLoading.isTrue
                       ? null

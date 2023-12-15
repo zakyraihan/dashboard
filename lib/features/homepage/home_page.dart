@@ -1,5 +1,6 @@
 import 'package:dashboard/color/constant_color.dart';
 import 'package:dashboard/features/homepage/controller/home_controller.dart';
+import 'package:dashboard/features/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -91,10 +92,17 @@ class _HomePageState extends State<HomePage> {
               left: 50,
               child: Icon(Icons.home, color: white, size: 35),
             ),
-            const Positioned(
+            Positioned(
               top: 40,
               right: 50,
-              child: Icon(Icons.person, color: white, size: 35),
+              child: IconButton(
+                onPressed: () => Get.to(const ProfileScreen()),
+                icon: const Icon(
+                  Icons.person,
+                  color: white,
+                  size: 35,
+                ),
+              ),
             ),
           ],
         ));
