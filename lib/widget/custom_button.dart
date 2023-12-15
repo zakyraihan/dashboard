@@ -10,6 +10,7 @@ class CustomButtonWidget extends StatelessWidget {
     this.width = 200,
     this.height = 60,
     this.onPressed,
+    this.loading,
   });
 
   final String label;
@@ -17,6 +18,7 @@ class CustomButtonWidget extends StatelessWidget {
   final double width;
   final double height;
   final Function()? onPressed;
+  final CircularProgressIndicator? loading;
 
   @override
   Widget build(BuildContext context) {
