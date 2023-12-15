@@ -22,6 +22,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
     });
   }
 
+  bool isAdmin = true;
+
   final authC = Get.put(AuthController());
   @override
   Widget build(BuildContext context) {
@@ -101,7 +103,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       color: blue,
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ],

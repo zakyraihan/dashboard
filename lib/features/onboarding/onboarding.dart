@@ -1,4 +1,5 @@
 import 'package:dashboard/features/user_auth/signup.dart';
+import 'package:dashboard/widget/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class OnBoarding extends StatefulWidget {
@@ -17,12 +18,22 @@ class _OnBoardingState extends State<OnBoarding> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('images/auth/Group 27567.png'),
-            ElevatedButton(
+            CustomButtonWidget(
+              label: 'Masuk',
               onPressed: () => Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                      builder: (context) => const SignUpScreen())),
-              child: const Text('Masuk'),
-            )
+                MaterialPageRoute(
+                  builder: (context) => const SignUpScreen(),
+                ),
+              ),
+            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //     ElevatedButton(onPressed: () {}, child: const Text('Admin')),
+            //     const Gap(10),
+            //     ElevatedButton(onPressed: () {}, child: const Text('Mahasiswa'))
+            //   ],
+            // )
           ],
         ),
       ),

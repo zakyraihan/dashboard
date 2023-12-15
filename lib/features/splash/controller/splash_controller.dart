@@ -26,7 +26,7 @@ class SplashScreenController extends GetxController {
 
   void handleRoute() async {
     if (await isLoggedIn()) {
-      Get.offAllNamed(RouteName.dashBoard);
+      Get.offAllNamed(RouteName.pilihan);
     } else {
       Get.offAllNamed(RouteName.onBoarding);
     }

@@ -60,7 +60,7 @@ class AuthController extends GetxController {
         title: 'Berhasil Register',
         message: 'Register Berhasil Ke Esa Unggul',
         duration: Duration(seconds: 3),
-      )).future.then((value) => Get.offAllNamed(RouteName.dashBoard));
+      )).future.then((value) => Get.offAllNamed(RouteName.pilihan));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         Get.showSnackbar(const GetSnackBar(
@@ -96,7 +96,7 @@ class AuthController extends GetxController {
         email: emailController.text,
         password: passwordController.text,
       );
-      Get.offAllNamed(RouteName.dashBoard);
+      Get.offAllNamed(RouteName.pilihan);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         Get.showSnackbar(const GetSnackBar(

@@ -1,6 +1,7 @@
 import 'package:dashboard/features/dashboard/dashboard.dart';
 import 'package:dashboard/features/homepage/home_page.dart';
 import 'package:dashboard/features/onboarding/onboarding.dart';
+import 'package:dashboard/features/pilihan/pilihan.dart';
 import 'package:dashboard/features/splash/bindings/splash_bindings.dart';
 import 'package:dashboard/features/splash/splash_screen.dart';
 import 'package:dashboard/features/user_auth/signin.dart';
@@ -15,6 +16,7 @@ class RouteName {
   static const mainScreen = '/main-screen';
   static const homeScreen = '/home-screen';
   static const dashBoard = '/dashBoard-screen';
+  static const pilihan = '/pilihan-screen';
 }
 
 class RoutePages {
@@ -40,10 +42,10 @@ class RoutePages {
       name: RouteName.signInScreen,
       page: () => const LoginScreen(),
     ),
-    // GetPage(
-    //   name: RouteName.mainScreen,
-    //   page: () => MainScreen(),
-    // ),
+    GetPage(
+      name: RouteName.pilihan,
+      page: () => const Pilihan(),
+    ),
     GetPage(
       name: RouteName.homeScreen,
       page: () => const HomePage(),
